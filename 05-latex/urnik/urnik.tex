@@ -7,6 +7,8 @@
 \usepackage[slovene]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath}
 
 \begin{document}
 
@@ -21,9 +23,9 @@
 % začetek povzetka
 
 \begin{abstract}
-   V članku so predstavljeni nekateri postopki za avtomatsko izdelavo urnikov. Opisani so
-   potrebni vhodni podatki, naštete so omejitve, ki jih je potrebno upoštevati pri izdelavi
-   urnikov, predstavljena je tudi metoda merjenja kakovosti izdelanega urnika.
+V članku so predstavljeni nekateri postopki za avtomatsko izdelavo urnikov. Opisani so
+potrebni vhodni podatki, naštete so omejitve, ki jih je potrebno upoštevati pri izdelavi
+urnikov, predstavljena je tudi metoda merjenja kakovosti izdelanega urnika.
 \end{abstract}
 % konec povzetka
 
@@ -76,14 +78,14 @@ matematika.
 
 
 \begin{verbatim}
-   <profesor>
-      <ime>Janez</ime>
-      <priimek>Novak</priimek>
-      <predmet>
-         <imePredmeta>matematika</imePredmeta>
-         <steviloUrNaTeden>3</steviloUrNaTeden>
-      </predmet>
-   </profesor>
+<profesor>
+   <ime>Janez</ime>
+   <priimek>Novak</priimek>
+   <predmet>
+      <imePredmeta>matematika</imePredmeta>
+      <steviloUrNaTeden>3</steviloUrNaTeden>
+   </predmet>
+</profesor>
 \end{verbatim}
 %
 % Spodnja vrstica ne začne novega odstavka, zato ne bi smela biti zamaknjena.
@@ -111,23 +113,23 @@ katere podatke naj vsebujejo.
    
    \begin{itemize}
       \item Razred \emph{Profesor} vsebuje osebne podatke profesorja (ime in priimek) ter
-      podatke o predmetih, ki jih predava. Hkrati moramo za vsako uro v tednu vedeti, če
-      je profesor takrat že zaseden, da mu slučajno ne bi dodelili dveh predavanj v istem
-      časovnem terminu. To je najlažje preverjati s pomočjo tabele zasedenosti, ki je
-      podrobneje opisana na koncu poglavja.
-   
+   podatke o predmetih, ki jih predava. Hkrati moramo za vsako uro v tednu vedeti, če
+   je profesor takrat že zaseden, da mu slučajno ne bi dodelili dveh predavanj v istem
+   časovnem terminu. To je najlažje preverjati s pomočjo tabele zasedenosti, ki je
+   podrobneje opisana na koncu poglavja.
+
       \item Razred \emph{Skupina} predstavlja skupino študentov. Kot podatke torej potrebujemo
       smer skupine (npr.\ edagoška matematika) ter število študentov v njej. Podobno kot pri
-      profesorjih, tudi tukaj potrebujemo tabelo zasedenosti.
-   
+   profesorjih, tudi tukaj potrebujemo tabelo zasedenosti.
+
       \item Razred \emph{Predavalnica} nosi podatke o kapaciteti predavalnice, njeno oznako
-      ter podatke o zasedenosti, ki so predstavljeni s tabelo.
-   
+   ter podatke o zasedenosti, ki so predstavljeni s tabelo.
+
       \item Razred \emph{Predmet} vsebuje podatke o posameznih predmetih. Kot podatke tega
-      objekta je smiselno navesti ime predmeta ter tedensko število ur njegove izvedbe.
-      Zanima nas tudi, katerim skupinam je predmet namenjen, ter v katerem semestru se bo
-      predaval.
-   
+   objekta je smiselno navesti ime predmeta ter tedensko število ur njegove izvedbe.
+   Zanima nas tudi, katerim skupinam je predmet namenjen, ter v katerem semestru se bo
+   predaval.
+
    \end{itemize}
 % Spodnja vrstica ne začne novega odstavka, zato ne bi smela biti zamaknjena.
 % To popravite z ukazom `\noindent` ali pa tako, da odstranite prazno vrstico.
@@ -136,7 +138,7 @@ Kar pri treh razredih je kot podatek navedena tabela zasedenosti, zato si jo pod
 oglejmo. Vsako tabelo določata njena velikost ter tip vrednosti. Naslednji izračun nam
 poda velikost tabele:
 \[
-velikostTabele = številoUrNaDan \cdot številoDelovnihDni
+velikostTabele = \text{š}teviloUrNaDan \cdot \text{š}teviloDelovnihDni
 \]
 Če bi predpostavili, da študijski dan traja od sedme ure zjutraj do osmih zvečer in da
 imamo pet delovnih dni, je velikost naše tabele 65 polj. Velikost te tabele torej pove,
@@ -149,8 +151,8 @@ dovolj, če podamo zasedenost le za en teden.
 Tip vrednosti tabele ni striktno določen. Tako bi nekateri programerji uporabili
 celoštevilsko tabelo, kjer bi vrednost 1 pomenila, da je oseba zasedena, vrednost 0
 pa bi predstavljala njeno dosegljivost. Podobno bi postopali, če bi izbrali logični
-tip (npr.\ ool v C++), kjer bi vrednost true predstavljala
-dosegljivost, false pa zasedenost.
+tip (npr.\ \texttt{bool} v C++), kjer bi vrednost \texttt{true} predstavljala
+dosegljivost, \texttt{false} pa zasedenost.
 
 \subsection{Omejitve} % podrazdelek
 
@@ -417,23 +419,23 @@ korakov, in si šele nato ogledajo njihov natančen opis.
    
    \begin{enumerate}
       \item Zunanjo zanko izvajamo, dokler ne dosežemo enega izmed ustavitvenih pogojev.
-      Če nekaj časa kljub spreminjanju operacij nad urnikom vedno znova obstojimo na isti
-      rešitvi, potem to najverjetneje pomeni, da smo prišli do lokalnega ekstrema. Drugi
-      ustavitveni pogoj je zadovoljivo velika vrednost kriterijske funkcije.
-   
+   Če nekaj časa kljub spreminjanju operacij nad urnikom vedno znova obstojimo na isti
+   rešitvi, potem to najverjetneje pomeni, da smo prišli do lokalnega ekstrema. Drugi
+   ustavitveni pogoj je zadovoljivo velika vrednost kriterijske funkcije.
+
       \item Naključno izberemo okolico trenutne rešitve. Z okolico izberemo tudi operacijo,
       ki jo izvajamo na tem koraku (npr.\ amenjava dveh srečanj).
-   
+
       \item Če v tem koraku izberemo tisto zamenjavo srečanj, ki izmed vseh možnih najbolj
-      poveča vrednost kriterijske funkcije, potem postopamo enako, kot požrešna metoda. Če
-      želimo nadgraditi postopek lokalnega vzpenjanja, ne potrebujemo nujno najboljše možne
-      zamenjave, ampak prvo, ki poveča vrednost kriterijske funkcije. Izjemoma dovolimo tudi
-      tisto zamenjavo, ki vrednost kriterijske funkcije nekoliko zmanjša, kar se na prvi
-      pogled zdi nesmiselno, nas pa dolgoročno pripelje do boljših rešitev.
-   
+   poveča vrednost kriterijske funkcije, potem postopamo enako, kot požrešna metoda. Če
+   želimo nadgraditi postopek lokalnega vzpenjanja, ne potrebujemo nujno najboljše možne
+   zamenjave, ampak prvo, ki poveča vrednost kriterijske funkcije. Izjemoma dovolimo tudi
+   tisto zamenjavo, ki vrednost kriterijske funkcije nekoliko zmanjša, kar se na prvi
+   pogled zdi nesmiselno, nas pa dolgoročno pripelje do boljših rešitev.
+
       \item Izbrano zamenjavo dveh srečanj izvedemo na trenutnem urniku. Vidimo, da en korak
-      lokalnega vzpenjanja res predstavlja eno spremembo nad urnikom, v konkretnem primeru
-      smo izvedli (eno) zamenjavo dveh srečanj.
+   lokalnega vzpenjanja res predstavlja eno spremembo nad urnikom, v konkretnem primeru
+   smo izvedli (eno) zamenjavo dveh srečanj.
    \end{enumerate}
 % konec okolja enumerate
 %
