@@ -5,11 +5,11 @@
 	% tako kot v datoteki prosojnice-resitev.pdf
 
 	Za prosojnice je značilna uporaba okolja \texttt{frame},
-	s katerim definiramo posamezno prosojnico,
+	s katerim definiramo posamezno prosojnico,\pause
 	%
-	postopno odkrivanje prosojnic,
+	postopno odkrivanje prosojnic,\pause
 	%
-	ter nekateri drugi ukazi, ki jih najdemo v paketu \texttt{beamer}.
+	ter nekateri drugi ukazi, ki jih najdemo v paketu \texttt{beamer}.\pause
 	%
 	\begin{exampleblock}{Primer}
 		Verjetno ste že opazili, da za naslovno prosojnico niste uporabili
@@ -20,9 +20,11 @@
 \begin{frame}{Poudarjeni bloki}
 	% Naloga 2.3.2:
 	% Oblikujte poudarjena bloka z opombo in opozorilom.
-
+        \begin{block}{Opomba}
+		\end{block}
 		Okolja za poudarjene bloke so \texttt{block}, \texttt{exampleblock} in \texttt{alertblock}.
-
+        \begin{alertblock}{Pozor!}
+		\end{alertblock}
 		Začetek poudarjenega bloka (ukaz \texttt{begin}) vedno sprejme 
 		dva argumenta: okolje in naslov bloka.
 		Drugi argument (za naslov) je lahko prazen. 
@@ -43,10 +45,10 @@
 		% Z neobveznim argumentom [<+->] okolja itemize določimo,
 		% da se elementi naštevanja odkrivajo postopoma.
 	   \begin{itemize}
-		  \item Naj bo \(p\) \alert{največje} praštevilo.
-		  \item Naj bo \(q\) produkt števil \(1\), \(2\), \ldots, \(p\).
-		  \item Število \(q+1\) ni deljivo z nobenim praštevilom, torej je \(q+1\) praštevilo.
-		  \item To je protislovje, saj je \(q+1>p\). \qedhere
+		  \item<1-> Naj bo \(p\) \alert{največje}<4-> praštevilo.
+		  \item<2-> Naj bo \(q\) produkt števil \(1\), \(2\), \ldots, \(p\).
+		  \item<3-> Število \(q+1\) ni deljivo z nobenim praštevilom, torej je \(q+1\) praštevilo.
+		  \item<4-> To je protislovje, saj je \(q+1>p\). \qedhere
 	   \end{itemize}
 	\end{proof}
  \end{frame}
